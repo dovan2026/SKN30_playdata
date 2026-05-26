@@ -1,0 +1,20 @@
+[project]
+name = "deep-learning"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "ipykernel>=6.31.0",
+    "mediapipe>=0.10.35",
+    "opencv-contrib-python>=4.13.0.92",
+    "pillow>=11.3.0",
+    "pip>=26.0.1",
+    "roboflow>=1.2.16",
+    "ultralytics>=8.4.51",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.31.0",
+]

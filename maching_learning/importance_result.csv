@@ -1,0 +1,6 @@
+feature_name
+"fBodyAcc-bandsEnergy()-1,8.1"
+tBodyAccJerkMag-iqr()
+tBodyAccMag-std()
+"tGravityAcc-arCoeff()-Z,3"
+tGravityAcc-energy()-Y

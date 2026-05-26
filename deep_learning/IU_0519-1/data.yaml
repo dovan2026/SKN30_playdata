@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['IU']
+
+roboflow:
+  workspace: new-workspace-r5lwc
+  project: iu_0519-cd7w3
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/new-workspace-r5lwc/iu_0519-cd7w3/dataset/1
