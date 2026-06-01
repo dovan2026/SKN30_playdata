@@ -20,6 +20,12 @@ wheels = [
 ]
 
 [[package]]
+name = "apyori"
+version = "1.1.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/5e/62/5ffde5c473ea4b033490617ec5caa80d59804875ad3c3c57c0976533a21a/apyori-1.1.2.tar.gz", hash = "sha256:e2e6ffcf14732b1b1432608cf83b81ac538243387b0458eb7d9296e770d462ec", size = 8639, upload-time = "2019-11-29T17:27:33.49Z" }
+
+[[package]]
 name = "asttokens"
 version = "3.0.1"
 source = { registry = "https://pypi.org/simple" }
@@ -484,6 +490,7 @@ name = "llm"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "apyori" },
     { name = "pyldavis" },
     { name = "scikit-learn" },
     { name = "tqdm" },
@@ -500,6 +507,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "apyori", specifier = ">=1.1.2" },
     { name = "pyldavis", specifier = ">=3.4.1" },
     { name = "scikit-learn", specifier = ">=1.8.0" },
     { name = "tqdm", specifier = ">=4.67.3" },
