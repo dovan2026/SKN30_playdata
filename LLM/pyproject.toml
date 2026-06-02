@@ -4,6 +4,7 @@ version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
     "apyori>=1.1.2",
+    "gensim>=4.4.0",
     "networkx>=3.6.1",
     "pyldavis>=3.4.1",
     "scikit-learn>=1.8.0",
