@@ -27,6 +27,19 @@ else:
 
 st.title("📕📝🔍 PDF 검색 서비스")
 
+# Using object notation
+add_selectbox = st.sidebar.selectbox(
+    "검색 문서 개수",
+    ("Email", "Home phone", "Mobile phone")
+)
+
+# Using "with" notation
+with st.sidebar:
+    add_radio = st.radio(
+        "Choose a shipping method",
+        ("Standard (5-15 days)", "Express (2-5 days)")
+    )
+
 # PDF 문서들에서 텍스트 추출
 def get_pdf_texts(pdf_docs):
     texts = ""
@@ -116,3 +129,4 @@ if user_query :=st.chat_input('궁금한 걸 입력해 주세요!! 🎊'):
 
     with st.chat_message('assistant'):
         st.write(response)
+
