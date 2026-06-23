@@ -54,6 +54,37 @@ class CompleteTodoTool(BaseTool):
         except Exception as e:
             return f"오류 발생: {e}"
         
+# # <<< 새로운 삭제 도구 추가 >>>
+
+class DeleteTodoInput(BaseModel):
+    """삭제할 할 일 항목의 입력을 정의합니다."""
+    item_number: int = Field(description="삭제할 할 일 항목의 번호 (목록에서 보이는 순서대로 1부터 시작)")
+
+class DeleteTodoTool(BaseTool):
+    """지정된 할 일 항목을 목록에서 삭제하는 도구입니다."""
+    name: str = "delete_todo"
+    description: str = "지정된 번호의 할 일을 목록에서 삭제합니다."
+    args_schema: Type[BaseModel] = DeleteTodoInput
+
+    def _run(self, item_number: int) -> str:
+        try:
+            if not todo_list:
+                return "삭제할 할 일 목록이 이미 비어있습니다."
+            if 0 < item_number <= len(todo_list):
+                removed_item = todo_list.pop(item_number - 1)  # 1-based index to 0-based
+                return f"'{removed_item}' 항목이 성공적으로 삭제되었습니다."
+            else:
+                return f"잘못된 항목 번호입니다: {item_number}. 'view_todos'로 현재 목록을 확인하세요."
+        except IndexError: # pop 중에 item_number가 범위를 벗어난 경우 (이론상 위의 조건문에서 걸러짐)
+            return "잘못된 항목 번호입니다. 목록 범위를 벗어났습니다."
+        except Exception as e:
+            return f"삭제 중 오류 발생: {e}"
+
+    async def _arun(self, item_number: int) -> str:
+        # 비동기 구현이 필요하면 여기에 작성, 간단한 경우 _run 호출
+        return self._run(item_number)
+
+# # <<< 삭제 도구 추가 완료 >>>    
 
 
         
