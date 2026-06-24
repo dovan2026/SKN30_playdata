@@ -7,4 +7,6 @@ dependencies = [
     "langchain>=0.0.27",
     "pandas>=2.0.3",
     "pywin32>=311",
+    "streamlit>=1.40.1",
+    "tool>=0.8.0",
 ]
