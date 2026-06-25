@@ -17,8 +17,6 @@ st.set_page_config(
     page_icon="✈️",
     layout="wide"
 )
-
-st.title("✈️ Full_AI 여행 플래너")
 st.title("✈️ CrewAI 여행 플래너")
 st.write("여행 전문가와 요리 전문가가 협업하여 여행 계획을 만들어줍니다.")
 
@@ -59,7 +57,6 @@ if st.button("여행 계획 생성"):
                 ),
                 allow_delegation=True,
                 verbose=True,
-                llm="gpt-5.4-mini"
                 llm="gpt-4o-mini"
             )
 
@@ -78,7 +75,6 @@ if st.button("여행 계획 생성"):
                 ),
                 tools=[search_tool],
                 verbose=True,
-                llm="gpt-5.4-mini"
                 llm="gpt-4o-mini"
             )
 
@@ -97,7 +93,6 @@ if st.button("여행 계획 생성"):
                 ),
                 tools=[search_tool],
                 verbose=True,
-                llm="gpt-5.4-mini"
                 llm="gpt-4o-mini"
             )
 
@@ -144,7 +139,6 @@ if st.button("여행 계획 생성"):
                 verbose=True
             )
 
-            result = crew.kickoff()
             # Streamlit의 이벤트 루프와 충돌을 피하기 위해
             # kickoff_async를 사용하고 asyncio.run으로 실행합니다.
             # nest_asyncio.apply()가 호출되었기 때문에 가능합니다.
