@@ -4,10 +4,15 @@ version = "0.1.0"
 description = "AI Agent Project"
 requires-python = ">=3.8"
 dependencies = [
+    "accelerate>=1.0.1",
+    "hf-xet>=1.5.1",
+    "ipywidgets>=8.1.8",
     "langchain>=0.0.27",
     "nest-asyncio>=1.6.0",
+    "ollama>=0.6.2",
     "pandas>=2.0.3",
     "pywin32>=311",
     "streamlit>=1.40.1",
     "tool>=0.8.0",
+    "transformers>=4.46.3",
 ]
