@@ -1,0 +1,10 @@
+[project]
+name = "tts"
+version = "0.1.0"
+description = "TTS practice project"
+requires-python = ">=3.10"
+dependencies = [
+  "pydub",
+  "pyaudio",
+  "elevenlabs>=2.56.0",
+]
