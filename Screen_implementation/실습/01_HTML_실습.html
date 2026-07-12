@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>01. HTML 실습 - 정답 예시</title>
+<style>
+  body { font-family: "Malgun Gothic", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #1e293b; }
+  .exercise { border: 2px solid #22c55e; border-radius: 10px; padding: 20px; margin-bottom: 28px; background: #f0fdf4; }
+  .exercise h3 { margin-top: 0; color: #1e40af; }
+  .instruction { background: #fef3e2; border-left: 4px solid #fb923c; padding: 10px 14px; margin-bottom: 14px; font-size: 14px; }
+  .workspace { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px; }
+  header.page-title { text-align: center; margin-bottom: 40px; }
+  header.page-title p { color: #64748b; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px; text-align: center; }
+  th { background: #e0f2fe; }
+  nav a { margin-right: 12px; }
+</style>
+</head>
+<body>
+
+<header class="page-title">
+  <h1>HTML 실습 - 정답 예시</h1>
+  <p>아래는 하나의 참고 답안입니다. 정답은 여러 형태가 있을 수 있으니 참고용으로만 활용하세요.</p>
+</header>
+
+<!-- ================= 실습 1 ================= -->
+<div class="exercise">
+  <h3>실습 1. 제목과 문단 태그</h3>
+  <div class="instruction">지시사항: h1로 제목, p와 strong으로 소개 문단 작성</div>
+  <div class="workspace">
+    <h1>안녕하세요, 저는 김철수입니다</h1>
+    <p>저는 <strong>프론트엔드 개발</strong>을 공부하고 있는 학생입니다. 새로운 것을 배우는 걸 좋아합니다.</p>
+  </div>
+</div>
+
+<!-- ================= 실습 2 ================= -->
+<div class="exercise">
+  <h3>실습 2. 리스트 (목록) 태그</h3>
+  <div class="instruction">지시사항: ul/li로 순서 없는 목록, ol/li로 순서 있는 목록 작성</div>
+  <div class="workspace">
+    <p>좋아하는 음식</p>
+    <ul>
+      <li>떡볶이</li>
+      <li>초밥</li>
+      <li>파스타</li>
+    </ul>
+    <p>좋아하는 순서</p>
+    <ol>
+      <li>떡볶이</li>
+      <li>초밥</li>
+      <li>파스타</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ================= 실습 3 ================= -->
+<div class="exercise">
+  <h3>실습 3. 표 (Table) 태그</h3>
+  <div class="instruction">지시사항: table, tr, th, td로 시간표 작성</div>
+  <div class="workspace">
+    <table>
+      <tr>
+        <th>요일</th>
+        <th>1교시</th>
+        <th>2교시</th>
+      </tr>
+      <tr>
+        <td>월요일</td>
+        <td>HTML/CSS</td>
+        <td>JavaScript</td>
+      </tr>
+      <tr>
+        <td>화요일</td>
+        <td>바이브코딩</td>
+        <td>포트폴리오</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ================= 실습 4 ================= -->
+<div class="exercise">
+  <h3>실습 4. 이미지와 링크</h3>
+  <div class="instruction">지시사항: img(src, alt)와 a(href) 작성</div>
+  <div class="workspace">
+    <img src="https://picsum.photos/300/200" alt="랜덤으로 표시되는 예시 이미지" style="border-radius:8px;">
+    <p><a href="https://developer.mozilla.org" target="_blank">MDN 문서 보러가기</a></p>
+  </div>
+</div>
+
+<!-- ================= 실습 5 ================= -->
+<div class="exercise">
+  <h3>실습 5. 폼(Form) 요소</h3>
+  <div class="instruction">지시사항: form, label, input, button 작성</div>
+  <div class="workspace">
+    <form>
+      <div style="margin-bottom:10px;">
+        <label for="name">이름</label><br>
+        <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+      </div>
+      <div style="margin-bottom:10px;">
+        <label for="email">이메일</label><br>
+        <input type="email" id="email" name="email" placeholder="example@email.com">
+      </div>
+      <button type="submit">제출</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= 실습 6 ================= -->
+<div class="exercise">
+  <h3>실습 6. 시맨틱 태그로 페이지 구조 만들기</h3>
+  <div class="instruction">지시사항: header, nav, main, footer로 뼈대 작성</div>
+  <div class="workspace">
+    <header>
+      <h2>나의 웹사이트</h2>
+      <nav>
+        <a href="#">홈</a>
+        <a href="#">소개</a>
+        <a href="#">연락처</a>
+      </nav>
+    </header>
+    <main>
+      <p>이곳은 페이지의 핵심 콘텐츠가 들어가는 영역입니다.</p>
+    </main>
+    <footer>
+      <p>&copy; 2026 나의 웹사이트. All rights reserved.</p>
+    </footer>
+  </div>
+</div>
+
+</body>
+</html>

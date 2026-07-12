@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>03. JavaScript 실습 - 정답 예시</title>
+<style>
+  body { font-family: "Malgun Gothic", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #1e293b; }
+  .exercise { border: 2px solid #22c55e; border-radius: 10px; padding: 20px; margin-bottom: 28px; background: #f0fdf4; }
+  .exercise h3 { margin-top: 0; color: #1e40af; }
+  .instruction { background: #fef3e2; border-left: 4px solid #fb923c; padding: 10px 14px; margin-bottom: 14px; font-size: 14px; }
+  button { background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+  button:hover { background: #1e40af; }
+  .output { background: #0f172a; color: #e2e8f0; font-family: "Courier New", monospace; padding: 12px; border-radius: 6px; margin-top: 10px; min-height: 24px; white-space: pre-wrap; }
+  header.page-title { text-align: center; margin-bottom: 30px; }
+  header.page-title p { color: #64748b; }
+</style>
+</head>
+<body>
+
+<header class="page-title">
+  <h1>JavaScript 실습 - 정답 예시</h1>
+  <p>버튼을 눌러 각 실습의 실행 결과를 확인해보세요.</p>
+</header>
+
+<div class="exercise">
+  <h3>실습 1. 변수와 자료형</h3>
+  <button onclick="exercise1()">실행하기</button>
+  <div class="output" id="output1"></div>
+</div>
+
+<div class="exercise">
+  <h3>실습 2. 조건문</h3>
+  <button onclick="exercise2()">실행하기</button>
+  <div class="output" id="output2"></div>
+</div>
+
+<div class="exercise">
+  <h3>실습 3. 반복문</h3>
+  <button onclick="exercise3()">실행하기</button>
+  <div class="output" id="output3"></div>
+</div>
+
+<div class="exercise">
+  <h3>실습 4. 함수</h3>
+  <button onclick="exercise4()">실행하기</button>
+  <div class="output" id="output4"></div>
+</div>
+
+<div class="exercise">
+  <h3>실습 5. 배열과 객체</h3>
+  <button onclick="exercise5()">실행하기</button>
+  <div class="output" id="output5"></div>
+</div>
+
+<div class="exercise">
+  <h3>실습 6. DOM 선택 & 이벤트</h3>
+  <input type="text" id="nameInput" placeholder="이름을 입력하세요">
+  <button onclick="exercise6()">인사하기</button>
+  <div class="output" id="output6"></div>
+</div>
+
+<script>
+  // ================= 실습 1 =================
+  function exercise1() {
+    const age = 20;
+    const name = "김철수";
+    const isStudent = true;
+    console.log(age, name, isStudent);
+    document.getElementById("output1").textContent =
+      `age: ${age}\nname: ${name}\nisStudent: ${isStudent}`;
+  }
+
+  // ================= 실습 2 =================
+  function exercise2() {
+    const score = 85;
+    let grade;
+    if (score >= 90) {
+      grade = "A";
+    } else if (score >= 80) {
+      grade = "B";
+    } else {
+      grade = "C";
+    }
+    console.log(grade);
+    document.getElementById("output2").textContent = `score: ${score} → grade: ${grade}`;
+  }
+
+  // ================= 실습 3 =================
+  function exercise3() {
+    let result = "";
+    for (let i = 1; i <= 5; i++) {
+      result += i + " ";
+      console.log(i);
+    }
+    document.getElementById("output3").textContent = result.trim();
+  }
+
+  // ================= 실습 4 =================
+  function add(a, b) {
+    return a + b;
+  }
+  function exercise4() {
+    const sum = add(3, 4);
+    console.log(sum);
+    document.getElementById("output4").textContent = "3 + 4 = " + sum;
+  }
+
+  // ================= 실습 5 =================
+  function exercise5() {
+    const fruits = ["사과", "바나나", "포도"];
+    let list = [];
+    fruits.forEach((fruit) => {
+      console.log(fruit);
+      list.push(fruit);
+    });
+    const user = { name: "철수", age: 20 };
+    console.log(user);
+    document.getElementById("output5").textContent =
+      `fruits: ${list.join(", ")}\nuser: {name: "${user.name}", age: ${user.age}}`;
+  }
+
+  // ================= 실습 6 =================
+  function exercise6() {
+    const inputEl = document.getElementById("nameInput");
+    const name = inputEl.value || "익명";
+    document.getElementById("output6").textContent = `안녕하세요, ${name}님!`;
+  }
+</script>
+
+</body>
+</html>

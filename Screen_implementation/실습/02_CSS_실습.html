@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>02. CSS 실습 - 정답 예시</title>
+<style>
+  body { font-family: "Malgun Gothic", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #1e293b; }
+  .exercise { border: 2px solid #22c55e; border-radius: 10px; padding: 20px; margin-bottom: 28px; background: #f0fdf4; }
+  .exercise h3 { margin-top: 0; color: #1e40af; }
+  .instruction { background: #fef3e2; border-left: 4px solid #fb923c; padding: 10px 14px; margin-bottom: 14px; font-size: 14px; }
+  .workspace { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px; }
+
+  /* ================= 실습 1: 선택자 ================= */
+  .target-box {
+    background-color: #dbeafe;
+    color: #1e3a8a;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  #target-id {
+    padding: 16px;
+    border: 2px solid #fb923c;
+    border-radius: 8px;
+  }
+
+  /* ================= 실습 2: 박스 모델 ================= */
+  .box-model-practice {
+    background: #e0f2fe;
+    padding: 24px;
+    border: 4px solid #0891b2;
+    margin: 20px 0;
+  }
+
+  /* ================= 실습 3: Flexbox ================= */
+  .flex-container {
+    background: #f1f5f9;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .flex-item {
+    background: #3b82f6;
+    color: white;
+    padding: 20px;
+    border-radius: 6px;
+    width: 80px;
+    text-align: center;
+  }
+
+  /* ================= 실습 4: 반응형 ================= */
+  .responsive-card {
+    background: #fef3e2;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 18px;
+  }
+  @media (max-width: 600px) {
+    .responsive-card {
+      font-size: 13px;
+      padding: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1 style="text-align:center;">CSS 실습 - 정답 예시</h1>
+<p style="text-align:center; color:#64748b;">
+  아래는 하나의 참고 답안입니다. 값은 자유롭게 바꿔서 실험해볼 수 있습니다.
+</p>
+
+<div class="exercise">
+  <h3>실습 1. 선택자 연습</h3>
+  <div class="instruction">.target-box와 #target-id에 스타일 적용 완료</div>
+  <div class="workspace">
+    <div class="target-box">저는 클래스 선택자로 스타일링됩니다.</div>
+    <div id="target-id">저는 아이디 선택자로 스타일링됩니다.</div>
+  </div>
+</div>
+
+<div class="exercise">
+  <h3>실습 2. 박스 모델 연습</h3>
+  <div class="instruction">padding, border, margin 적용 완료</div>
+  <div class="workspace">
+    <div class="box-model-practice">이 박스의 여백을 조정해보세요</div>
+  </div>
+</div>
+
+<div class="exercise">
+  <h3>실습 3. Flexbox 연습</h3>
+  <div class="instruction">display: flex + justify-content: space-between 적용 완료</div>
+  <div class="workspace">
+    <div class="flex-container">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <h3>실습 4. 반응형 기초 연습</h3>
+  <div class="instruction">화면 폭 600px 이하에서 글자 크기가 작아지도록 media query 적용 완료</div>
+  <div class="workspace">
+    <div class="responsive-card">
+      <p>브라우저 창 크기를 줄여서 반응형 결과를 확인하세요.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

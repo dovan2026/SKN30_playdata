@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>04. 종합실습 - 프로필 카드</title>
+<style>
+  body {
+    font-family: "Malgun Gothic", sans-serif;
+    background: #f1f5f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  /* ===================================================
+     실습 요구사항
+     1) .card에 padding, border-radius, box-shadow(그림자)를 적용하세요
+     2) .card에 display:flex, flex-direction:column, align-items:center를 적용해
+        내부 요소를 세로 중앙 정렬하세요
+     3) 화면 폭이 480px 이하이면 카드 너비가 90%가 되도록
+        media query를 추가하세요
+     =================================================== */
+
+  .card {
+    background: white;
+    width: 320px;
+    /* TODO 1: padding, border-radius, box-shadow를 추가하세요 */
+
+    /* TODO 2: display, flex-direction, align-items를 추가하세요 */
+  }
+
+  .card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+  }
+
+  .card h2 {
+    margin: 0 0 6px 0;
+    color: #0f172a;
+  }
+
+  .card p.bio {
+    color: #64748b;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tags li {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+  }
+
+  /* TODO 3: 여기에 media query를 추가하세요 */
+  /*
+  @media (max-width: 480px) {
+    .card {
+      width: 90%;
+    }
+  }
+  */
+</style>
+</head>
+<body>
+
+  <!-- TODO: 아래 구조를 참고해 이미지, 이름(h2), 소개(p), 태그 목록(ul)을 완성하세요 -->
+  <div class="card">
+    <img src="https://picsum.photos/200" alt="프로필 사진">
+    <h2>이름을 입력하세요</h2>
+    <p class="bio">한 줄 자기소개를 작성하세요</p>
+    <ul class="tags">
+      <li>태그1</li>
+      <li>태그2</li>
+      <li>태그3</li>
+    </ul>
+  </div>
+
+</body>
+</html>

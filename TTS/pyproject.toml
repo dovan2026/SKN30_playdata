@@ -7,4 +7,6 @@ dependencies = [
   "pydub",
   "pyaudio",
   "elevenlabs>=2.56.0",
+  "faster-whisper>=1.2.1",
+  "qwen-tts>=0.1.1",
 ]
