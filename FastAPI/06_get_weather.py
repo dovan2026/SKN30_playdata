@@ -10,4 +10,7 @@ weather_db = {
 
 @app.get('/weather')
 def root(city: str):
-    return 
+    for weather in weather_db.values():
+        if weather['city'] == city:
+            temperature = weather['temperature']
+    return {'message': f'안녕하세요, {city}의 온도는 {temperature}입니다.'}
