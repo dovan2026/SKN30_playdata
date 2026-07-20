@@ -7,9 +7,9 @@
 
 from fastapi import FastAPI
 
-# import models
-# from database import engine
-# from routers import books
+import models
+from database import engine
+from routers import books
 
 # 등록된 ORM 모델을 기준으로 없는 테이블을 생성함.
 models.Base.metadata.create_all(bind=engine)
@@ -21,7 +21,7 @@ app = FastAPI(
 )
 
 # books.py의 모든 엔드포인트를 최종 FastAPI 앱에 등록.
-# app.include_router(books.router)
+app.include_router(books.router)
 
 @app.get("/", tags=['root'])
 def root():

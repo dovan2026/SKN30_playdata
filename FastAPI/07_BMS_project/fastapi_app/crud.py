@@ -55,3 +55,57 @@ def delete_book(db: Session, book_id: int) -> bool:
     db.commit()
    
     return True
+
+
+###################################################################
+### 실습 : 책 정보 수정
+###################################################################
+def update_book(
+    db: Session,
+    book_id: int,
+    title: str,
+    author: str,
+    publisher_year: str,
+) -> models.Book | None:
+    """UPDATE: 책이 있으면 정보를 수정하고, 없으면 None을 반환합니다."""
+
+    # 기존 get_book() 함수를 이용하여 수정할 책을 조회합니다.
+    book = get_book(db, book_id)
+
+    # 해당 ID의 책이 없으면 None을 반환합니다.
+    if book is None:
+        return None
+
+    # SQLAlchemy 객체의 속성을 새로운 값으로 변경합니다.
+    book.title = title
+    book.author = author
+    book.publisher_year = publisher_year
+
+    # 변경 내용을 데이터베이스에 반영합니다.
+    db.commit()
+
+    # 데이터베이스의 최신 값을 객체에 다시 불러옵니다.
+    db.refresh(book)
+
+    # 수정된 Book 객체를 반환합니다.
+    return book
+
+###################################################################
+### 실습 : 제목, 저자 검색
+###################################################################
+def search_books(
+    db: Session,
+    keyword: str,
+) -> list[models.Book]:
+    """SEARCH: 제목 또는 저자에 검색어가 포함된 책을 조회합니다."""
+
+    stmt = (
+        select(models.Book)
+        .where(
+            models.Book.title.ilike(f"%{keyword}%")
+            | models.Book.author.ilike(f"%{keyword}%")
+        )
+        .order_by(models.Book.id)
+    )
+
+    return list(db.scalars(stmt).all())
