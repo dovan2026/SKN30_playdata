@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블로그 콘텐츠 생성기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>블로그 콘텐츠 생성기</h1>
+        <div class="form-group">
+            <label for="topic-input">블로그 주제를 입력하세요:</label>
+            <input type="text" id="topic-input" placeholder="예: 최신 AI 기술 동향">
+            <button id="generate-btn">콘텐츠 생성</button>
+        </div>
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>콘텐츠를 생성하는 중입니다. 잠시만 기다려주세요...</p>
+        </div>
+        <div id="result-container" class="hidden">
+            <h2>생성된 콘텐츠:</h2>
+            <pre id="result"></pre>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
