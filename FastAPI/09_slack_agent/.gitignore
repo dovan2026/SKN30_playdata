@@ -23,3 +23,7 @@ data/
 # IDE 설정 파일
 .vscode/
 .idea/
+
+# 대용량 바이너리 파일 (GitHub 50MB 제한 초과)
+*.exe
+cloudflared*
