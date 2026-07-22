@@ -47,7 +47,7 @@ def create_app(
         run_repository = repository or RunRepository.from_url(
             resolved_settings.run_database_url
         )
-        await run_repository.setup()
+        await run_repository.setup()        # 실행 기록을 저장할 DB 테이블 등 준비
         app.state.run_repository = run_repository
 
         checkpoint_context = None
@@ -113,9 +113,18 @@ def create_app(
                 await run_repository.close()
 
     # FastAPI 애플리케이션 객체를 만들고 세 종류의 API 라우터를 등록
+    application = FastAPI(
+        title = "slack 에이전트 챗봇",
+        version = "0.1.0",
+        lifespan=lifespan   # FastAPI 서버가 시작되고 종료될 때 실행할 초기화호, 정리 함수를 등록하는 코드
+    )
 
+    # 기능별 API 라우터를 application에 등록
+    application.include_router(health_router)
+    application.include_router(agent_router)
+    application.include_router(slack_router)
 
-
+    # AgentExecutionError가 발생했을 때 실행되는 예외 처리 handler
     @application.exception_handler(AgentExecutionError)
     async def handle_agent_error(
         request: Request,

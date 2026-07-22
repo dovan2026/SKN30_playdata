@@ -48,7 +48,7 @@ flowchart LR
         CHECKPOINT_DB[("checkpoints.sqlite<br/>대화 상태")]
     end
 
-    USER -->|"/econ 질문"| SLACK
+    USER -->|"/botto 질문"| SLACK
     USER -->|"스레드 후속 질문"| SLACK
     SLACK -->|"서명된 HTTP POST"| TUNNEL
     TUNNEL --> SLACK_API
@@ -112,7 +112,7 @@ sequenceDiagram
     participant Runs as runs.sqlite
     participant CP as checkpoints.sqlite
 
-    User->>Slack: /econ 반도체 수출
+    User->>Slack: /botto 반도체 수출
     Slack->>Tunnel: Slash Command HTTP POST
     Tunnel->>API: POST /slack/events
     API->>Handler: Bolt 서명 검증 후 전달

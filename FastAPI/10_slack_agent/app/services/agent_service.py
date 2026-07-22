@@ -50,9 +50,15 @@ class AgentService:
             )
             await self.repository.mark_running(run_id)
         try:
-            # graph.invoke
-            result = 
-
+            result = await self.graph.ainvoke(
+                {
+                    "query": query,
+                    "run_id": str(run_id),
+                    "messages": [HumanMessage(content=query)],
+                    "error": None,
+                },
+                config={"configurable": {"thread_id": thread_id}},
+            )
 
             if result.get("error"):
                 error = AgentErrorState.model_validate(result["error"])
@@ -62,12 +68,15 @@ class AgentService:
                     message=error.message,
                     retryable=error.retryable,
                 )
-            
+
             # AgentResponse
-            response = 
+            response = AgentResponse(
+                run_id=run_id,
+                thread_id=thread_id,
+                answer=result["final_answer"],
+                sources=[Source.model_validate(item) for item in result.get("sources", [])],
+            )
 
-
-            
             if self.repository is not None:
                 await self.repository.mark_success(run_id, response.answer)
             return response

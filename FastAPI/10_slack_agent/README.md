@@ -1,11 +1,11 @@
 # 경제 뉴스 분석 에이전트 Slack 챗봇
 
-Tavily 뉴스 검색 결과를 LangGraph와 OpenAI로 분석하고, FastAPI 또는 Slack `/econ` 명령으로 답변을 제공하는 챗봇입니다.
+Tavily 뉴스 검색 결과를 LangGraph와 OpenAI로 분석하고, FastAPI 또는 Slack `/botto` 명령으로 답변을 제공하는 챗봇입니다.
 
 ## 구성
 
 ```text
-Slack /econ
+Slack /botto
   -> FastAPI + Slack Bolt
   -> asyncio.Queue worker
   -> AgentService
@@ -77,7 +77,7 @@ uv run uvicorn app.main:app --reload
 Slack App에서 다음을 설정합니다.
 
 1. Bot Token Scopes: `commands`, `chat:write`, `channels:history`
-2. Slash Command: `/econ`
+2. Slash Command: `/botto`
 3. Event Subscription: `message.channels`
 4. 앱을 공개 채널에 초대하고 Workspace에 재설치
 5. Bot Token과 Signing Secret을 `.env`에 저장
@@ -94,7 +94,7 @@ Slack의 Slash Command 및 Event Subscription Request URL을 다음으로 설정
 https://<생성된-주소>/slack/events
 ```
 
-`/econ 반도체 수출`을 입력하면 봇이 즉시 진행 메시지를 게시하고 최종 분석을 해당 메시지의 스레드에 작성합니다. 그 스레드에 일반 메시지로 후속 질문을 보내면 같은 LangGraph `thread_id`를 재사용합니다.
+`/botto 반도체 수출`을 입력하면 봇이 즉시 진행 메시지를 게시하고 최종 분석을 해당 메시지의 스레드에 작성합니다. 그 스레드에 일반 메시지로 후속 질문을 보내면 같은 LangGraph `thread_id`를 재사용합니다.
 
 ## 4. 저장과 장애 동작
 

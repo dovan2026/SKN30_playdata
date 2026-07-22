@@ -3,6 +3,10 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import sys
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 from app.core.config import get_settings
 from app.tools.news_search import TavilyNewsSearch

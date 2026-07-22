@@ -11,7 +11,7 @@ class Base(DeclarativeBase):
 
 
 class AgentRun(Base):
-    __tablename__ = "
+    __tablename__ = "agent_runs"
 
     run_id: Mapped[str] = mapped_column(String(36), primary_key=True)
     thread_id: Mapped[str] = mapped_column(String(255), index=True)

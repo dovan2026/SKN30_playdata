@@ -25,11 +25,14 @@ def _error(code: str, message: str, retryable: bool) -> dict[str, Any]:
     ).model_dump()
 
 
+# 문자열 목록을 Slack에서 읽기 쉬운 bullets 목록으로 만듦
 def _bullets(items: list[str]) -> str:
     return "\n".join(f"• {item}" for item in items)
 
 
+
 def format_analysis(analysis: EconomicAnalysis, sources: list[Source]) -> str:
+    # 모든 응답에서 공통으로 보여 줄 분석 항목을 순서대로 구성
     sections = [
         f"📊 *{analysis.title}*",
         f"*1. 핵심 뉴스*\n{_bullets(analysis.core_news)}",
@@ -41,6 +44,7 @@ def format_analysis(analysis: EconomicAnalysis, sources: list[Source]) -> str:
     ]
     if analysis.caveats:
         sections.append(f"*분석 한계*\n{_bullets(analysis.caveats)}")
+    # Slack 링크 문법인 <URL|표시할 제목> 형식으로 출처를 만든다.
     source_lines = [
         f"[{index}] <{source.url}|{source.title.replace('|', ' ')}>"
         for index, source in enumerate(sources, start=1)
@@ -56,6 +60,7 @@ def create_nodes(
     news_limit: int = 5,
     news_days: int = 7,
 ) -> dict[str, Callable[..., Any]]:
+    # 첫 질문은 검색을 강제하고, 출처가 있는 후속 질문은 모델에게 계획을 맡긴다.
     async def plan_query(state: AgentState) -> dict[str, Any]:
         query = state.get("query", "").strip()
         if not query:
@@ -64,6 +69,7 @@ def create_nodes(
             }
         has_sources = bool(state.get("search_results"))
         if not has_sources:
+            # 최초 질문에는 참고할 출처가 없으므로 사용자 질문을 그대로 검색
             plan = QueryPlan(
                 needs_search=True,
                 search_query=query,
@@ -71,6 +77,7 @@ def create_nodes(
             )
             return {"plan": plan.model_dump(), "error": None}
         try:
+            # 기존 출처가 있으면 재검색할지, 기존 자료를 재사용할지 LLM이 판단
             plan = await model.plan(
                 query=query,
                 messages=state.get("messages", []),
@@ -85,7 +92,8 @@ def create_nodes(
                     True,
                 )
             }
-
+    
+    # 계획 에이전트에서 만든 검색어로 뉴스를 수집하고 분석용 데이터와 출처를 저장 
     async def search_news_node(state: AgentState) -> dict[str, Any]:
         try:
             plan = QueryPlan.model_validate(state.get("plan"))
@@ -119,12 +127,14 @@ def create_nodes(
                     True,
                 )
             }
-
+        
+    # 검색 결과를 모델에게 전달하여 구조화된 경제 분석을 생성
     async def analyze_economy(state: AgentState) -> dict[str, Any]:
         try:
             results = [
                 NewsItem.model_validate(item) for item in state.get("search_results", [])
             ]
+            # 근거 자료가 없다면 LLM을 호출하지 않고 분석을 중단.
             if not results:
                 return {
                     "error": _error(
@@ -134,6 +144,7 @@ def create_nodes(
                     )
                 }
             plan = QueryPlan.model_validate(state.get("plan"))
+            # 모델에는 원래 질문과 대화 내역, 뉴스 출처를 전달한다
             analysis = await model.analyze(
                 query=state["query"],
                 messages=state.get("messages", []),
@@ -149,7 +160,8 @@ def create_nodes(
                     True,
                 )
             }
-
+        
+    # Pydantic 분석 데이터를 사용자에게 보여 줄 Slack 메시지로 변환
     async def format_answer(state: AgentState) -> dict[str, Any]:
         try:
             analysis = EconomicAnalysis.model_validate(state.get("analysis"))

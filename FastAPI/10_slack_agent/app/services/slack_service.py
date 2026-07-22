@@ -14,7 +14,7 @@ class SlackHandlers:
         self.job_service = job_service
         self.repository = repository
 
-    async def econ_command(
+    async def botto_command(
         self,
         *,
         ack: Ack,
@@ -23,7 +23,7 @@ class SlackHandlers:
     ) -> None:
         query = str(command.get("text") or "").strip()
         if not query:
-            await ack("사용법: `/econ 반도체 수출`처럼 분석할 주제를 입력해 주세요.")
+            await ack("사용법: `/botto 반도체 수출`처럼 분석할 주제를 입력해 주세요.")
             return
         await ack()
 

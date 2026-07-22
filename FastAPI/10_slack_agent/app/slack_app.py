@@ -24,10 +24,23 @@ def create_slack_app(
     )
 
 
-    # Slack의 /econ 명령과 채널 메시지 이벤트를 감지해 각각 지정된 핸들러로 전달
+    # Slack의 /botto 명령과 채널 메시지 이벤트를 감지해 각각 지정된 핸들러로 전달
+    @app.command('/botto')
+    async def botto_command(ack, command, client):
+        await handlers.botto_command(
+            ack=ack,
+            command=command,
+            client=client
+            )
 
-
-
+    # Slack에서 message 이벤트가 발생하면 실행할 함수
+    @app.event('message')
+    async def message_event(event, body, client):
+        await handlers.message_event(
+            event=event,
+            body=body,
+            client=client
+        )
 
     return app
 

@@ -1,5 +1,5 @@
 [project]
-name = "slack-econ-agent"
+name = "slack-botto-agent"
 version = "0.1.0"
 description = "Slack economic-news chatbot powered by FastAPI, LangGraph, Tavily, and OpenAI"
 readme = "README.md"
