@@ -1,0 +1,36 @@
+# 환경 변수 파일 (절대 커밋 금지)
+.env
+.env.*
+!.env.sample
+!.env.example
+
+# Python
+__pycache__/
+*.py[oc]
+*.pyc
+build/
+dist/
+wheels/
+*.egg-info
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+logs/
+
+# Binaries
+*.exe
+cloudflared.exe
