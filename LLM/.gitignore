@@ -1,3 +1,13 @@
+# 환경 변수 (절대 커밋 금지)
+.env
+.env.*
+!.env.sample
+!.env.example
+secrets.toml
+streamlit/secrets.toml
+.streamlit/secrets.toml
+
+# 가상환경 및 캐시
 .venv/
 .venv-*/
 __pycache__/
@@ -7,9 +17,3 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-
-.env
-.env.*
-secrets.toml
-streamlit/secrets.toml
-.streamlit/secrets.toml

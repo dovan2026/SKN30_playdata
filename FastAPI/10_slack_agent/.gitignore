@@ -1,0 +1,14 @@
+# 환경 변수 (보안 토큰 / API 키 보호 - 절대 커밋 금지)
+.env
+.env.*
+!.env.sample
+!.env.example
+
+# 가상환경 및 캐시
+.venv/
+__pycache__/
+*.py[cod]
+
+# SQLite DB
+*.sqlite
+*.db

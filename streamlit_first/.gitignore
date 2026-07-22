@@ -8,3 +8,11 @@ wheels/
 
 # Virtual environments
 .venv
+
+# 환경 변수 (절대 커밋 금지)
+.env
+.env.*
+!.env.sample
+!.env.example
+secrets.toml
+.streamlit/secrets.toml
