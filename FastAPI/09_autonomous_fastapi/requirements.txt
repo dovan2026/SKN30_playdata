@@ -1,6 +1,0 @@
-fastapi
-uvicorn[standard]
-pydantic
-langgraph>=0.2.0
-langchain-openai
-python-dotenv
