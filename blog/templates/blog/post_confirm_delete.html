@@ -1,0 +1,10 @@
+<h1>게시글 삭제</h1>
+<p>정말 삭제하시겠습니까?</p>
+<p>{{ post.title }}</p>
+
+<form method="post">
+    {% csrf token %}
+    <button type="submit">삭제</button>
+</form>
+
+<p><a href='{% url 'post_detail' %}'>취소</a></p>

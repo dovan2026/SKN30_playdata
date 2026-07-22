@@ -1,0 +1,12 @@
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<small>{{ post.created_at }}</small>
+
+<p><a href="{% url 'post_list' %}">목록으로</a></p>
+{% if user.is_authenticated %}
+<p>
+    <a href="{% url 'post_update' post.pk %}">수정</a>
+    <a href="{% url 'post_delete' post.pk %}">삭제</a>
+</p>
+{% endif %}
+
