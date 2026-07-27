@@ -2,19 +2,24 @@
 name = "ai-agent"
 version = "0.1.0"
 description = "AI Agent Project"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 dependencies = [
     "accelerate>=1.0.1",
     "datasets>=3.1.0",
     "hf-xet>=1.5.1",
     "ipywidgets>=8.1.8",
     "langchain>=0.0.27",
+    "langchain-community",
+    "langchain-openai",
+    "langchain-tavily>=0.2.11",
+    "langgraph",
     "matplotlib>=3.7.5",
     "nest-asyncio>=1.6.0",
     "ollama>=0.6.2",
     "pandas>=2.0.3",
     "pywin32>=311",
     "streamlit>=1.40.1",
+    "tavily-python",
     "tool>=0.8.0",
     "transformers>=4.46.3",
 ]
