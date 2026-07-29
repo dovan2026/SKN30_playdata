@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="HTML, CSS, JavaScript, FastAPI, OpenAI, Docker Compose 챗봇 실습"
+    >
+    <title>Compose AI Chat</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-glow page-glow-left" aria-hidden="true"></div>
+    <div class="page-glow page-glow-right" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Compose AI Chat 홈">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img">
+            <path d="M7 8.5h10M7 12h6m-1 9-3.8-3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2.2L12 21Z"></path>
+          </svg>
+        </span>
+        <span>
+          <strong>Compose AI</strong>
+          <small>Chatbot Lab</small>
+        </span>
+      </a>
+
+      <div id="api-status" class="status status-checking" role="status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-text">서비스 확인 중</span>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <aside class="sidebar">
+        <div>
+          <p class="eyebrow">AI Chatbot on AWS</p>
+          <h1>AI 챗봇</h1>
+          <p class="intro">
+            간단한 질문을 해보세요
+          </p>
+        </div>
+
+        <div class="architecture" aria-label="요청 흐름">
+          <div>
+            <span class="architecture-number">01</span>
+            <span>Browser</span>
+          </div>
+          <span class="architecture-arrow" aria-hidden="true">→</span>
+          <div>
+            <span class="architecture-number">02</span>
+            <span>Nginx</span>
+          </div>
+          <span class="architecture-arrow" aria-hidden="true">→</span>
+          <div>
+            <span class="architecture-number">03</span>
+            <span>FastAPI</span>
+          </div>
+          <span class="architecture-arrow" aria-hidden="true">→</span>
+          <div>
+            <span class="architecture-number">04</span>
+            <span>OpenAI</span>
+          </div>
+        </div>
+
+        <section class="service-card" aria-labelledby="service-title">
+          <div class="section-title-row">
+            <div>
+              <p class="section-kicker">Runtime</p>
+              <h2 id="service-title">서비스 정보</h2>
+            </div>
+            <span id="key-badge" class="key-badge key-checking">확인 중</span>
+          </div>
+
+          <dl class="service-info">
+            <div>
+              <dt>환경</dt>
+              <dd data-field="app_env">-</dd>
+            </div>
+            <div>
+              <dt>버전</dt>
+              <dd data-field="app_version">-</dd>
+            </div>
+            <div>
+              <dt>모델</dt>
+              <dd data-field="model">-</dd>
+            </div>
+          </dl>
+        </section>
+
+        <div id="api-key-warning" class="api-key-warning" hidden>
+          <strong>API 키 설정 필요</strong>
+          <p>
+            서버의 <code>api.env</code>에 <code>OPENAI_API_KEY</code>를
+            설정한 뒤 API 컨테이너를 다시 시작하세요.
+          </p>
+        </div>
+      </aside>
+
+      <section class="chat-card" aria-labelledby="chat-title">
+        <header class="chat-header">
+          <div>
+            <p class="section-kicker">Live conversation</p>
+            <h2 id="chat-title">AI 어시스턴트</h2>
+          </div>
+          <button id="reset-button" class="reset-button" type="button">
+            대화 초기화
+          </button>
+        </header>
+
+        <div
+          id="message-list"
+          class="message-list"
+          role="log"
+          aria-live="polite"
+          aria-label="챗봇 대화"
+        >
+          <article class="message message-assistant">
+            <div class="avatar" aria-hidden="true">AI</div>
+            <div class="message-body">
+              <div class="message-meta">
+                <strong>AI 어시스턴트</strong>
+                <span>지금</span>
+              </div>
+              <p>
+                안녕하세요! Docker, FastAPI, AWS에 관해 질문해 보세요.
+                짧은 질문부터 시작하면 좋습니다.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div id="typing-indicator" class="typing-indicator" hidden>
+          <span></span><span></span><span></span>
+          <p>답변을 만들고 있습니다</p>
+        </div>
+
+        <div id="error-message" class="error-message" role="alert" hidden></div>
+
+        <div class="suggestion-row" aria-label="추천 질문">
+          <button class="suggestion" type="button">
+            Docker Compose를 쉽게 설명해줘
+          </button>
+          <button class="suggestion" type="button">
+            FastAPI의 장점은 무엇이야?
+          </button>
+          <button class="suggestion" type="button">
+            EC2 보안 그룹이 뭐야?
+          </button>
+        </div>
+
+        <form id="chat-form" class="composer">
+          <label for="message-input" class="sr-only">메시지 입력</label>
+          <textarea
+            id="message-input"
+            name="message"
+            rows="1"
+            maxlength="4000"
+            placeholder="궁금한 내용을 입력하세요"
+            autocomplete="off"
+            required
+          ></textarea>
+          <div class="composer-footer">
+            <span><kbd>Enter</kbd> 전송 · <kbd>Shift</kbd>+<kbd>Enter</kbd> 줄바꿈</span>
+            <div class="composer-actions">
+              <span id="character-count">0 / 4000</span>
+              <button id="send-button" class="send-button" type="submit">
+                <span>전송</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m4 4 17 8-17 8 3-8-3-8Zm3 8h14"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <footer class="chat-footer">
+          <span>최근 20개 메시지만 API에 전달됩니다.</span>
+          <a href="/api/docs" target="_blank" rel="noreferrer">API 문서</a>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
