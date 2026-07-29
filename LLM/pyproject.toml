@@ -55,6 +55,7 @@ dependencies = [
     "lancedb>=0.6.0",
     "jupyter>=1.0.0",
     "pylance>=7.0.0",
+    "obsidian-graph>=0.1.2",
 ]
 
 [tool.uv]

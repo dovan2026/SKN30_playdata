@@ -2493,6 +2493,7 @@ dependencies = [
     { name = "loader" },
     { name = "networkx" },
     { name = "numpy" },
+    { name = "obsidian-graph" },
     { name = "openai" },
     { name = "pd" },
     { name = "pip" },
@@ -2560,6 +2561,7 @@ requires-dist = [
     { name = "loader", specifier = ">=2017.9.11" },
     { name = "networkx", specifier = ">=3.6.1" },
     { name = "numpy", specifier = ">=2.4.6" },
+    { name = "obsidian-graph", specifier = ">=0.1.2" },
     { name = "openai", specifier = ">=2.41.0" },
     { name = "pd", specifier = ">=0.0.4" },
     { name = "pip", specifier = ">=26.1.2" },
@@ -3369,6 +3371,20 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/0b/5f/19930f824ffeb0ad4372da4812c50edbd1434f678c90c2733e1188edfc63/oauthlib-3.3.1.tar.gz", hash = "sha256:0f0f8aa759826a193cf66c12ea1af1637f87b9b4622d46e866952bb022e538c9", size = 185918, upload-time = "2025-06-19T22:48:08.269Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/be/9c/92789c596b8df838baa98fa71844d84283302f7604ed565dafe5a6b5041a/oauthlib-3.3.1-py3-none-any.whl", hash = "sha256:88119c938d2b8fb88561af5f6ee0eec8cc8d552b7bb1f712743136eb7523b7a1", size = 160065, upload-time = "2025-06-19T22:48:06.508Z" },
+]
+
+[[package]]
+name = "obsidian-graph"
+version = "0.1.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "networkx" },
+    { name = "pyyaml" },
+    { name = "toml" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/9e/90/c8aaaf31dd2d82a6b1992960e32479a3c64ae0287740f56f21713f002c8d/obsidian_graph-0.1.2.tar.gz", hash = "sha256:bb469e621de62ac4d8d4e3612858f0068288627037404b5417d67ec51b19b425", size = 8096, upload-time = "2025-07-08T05:46:42.438Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/05/20/340cf1c63e2e82df51d6b3fa1a7f886981ce295094f4b03564a94b231004/obsidian_graph-0.1.2-py3-none-any.whl", hash = "sha256:47d8367a5f00eafddcdad5eb55aaf98b24785a855ad03f16b79e922d2a85405c", size = 7563, upload-time = "2025-07-08T05:46:40.975Z" },
 ]
 
 [[package]]

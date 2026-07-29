@@ -142,7 +142,11 @@ def show_obsidian_graph(
     """ % ("true" if physics else "false"))
 
     out = pathlib.Path(output_path).absolute()
-    net.write_html(str(out), notebook=notebook, open_browser=False)
+    html_content = net.generate_html(notebook=notebook)
+    out.write_text(html_content, encoding="utf-8")
+    if notebook:
+        from IPython.display import IFrame
+        return IFrame(src=output_path, width="100%", height=f"{height_px}px")
     return str(out)
 
 

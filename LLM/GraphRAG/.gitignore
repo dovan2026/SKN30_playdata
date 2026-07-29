@@ -1,0 +1,39 @@
+# Environment & Secrets (환경 변수 및 보안 키)
+.env
+.env.local
+*.env
+
+# Virtual Environment (가상 환경)
+.venv/
+venv/
+ENV/
+env/
+
+# Python Cache & Artifacts (파이썬 캐시 파일)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.python-version
+
+# Jupyter Notebook (체크포인트)
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Generated Output Files (생성된 HTML 시각화 결과물)
+*.html
+
+# IDE & Editor Settings (에디터 설정)
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Generated Files (운영체제 임시 파일)
+.DS_Store
+Thumbs.db
+
+# Logs & Data (로그 및 데이터)
+*.log
+*.sqlite3
+*.db
